@@ -69,5 +69,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("multiplication", multiplication);
+
+        // Commit the edits!
+        editor.commit();
     }
 }
