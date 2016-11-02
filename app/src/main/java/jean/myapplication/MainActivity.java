@@ -1,5 +1,6 @@
 package jean.myapplication;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,11 +10,24 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String PREFS_NAME = "CalcFile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        boolean multiplication = settings.getBoolean("multiplication", false);
+
+        Switch switchMul = (Switch) findViewById(R.id.switch1);
+        switchMul.setChecked(multiplication);
+
+        if (multiplication) {
+            ((TextView) findViewById(R.id.textView)).setText("*");
+        } else {
+            ((TextView) findViewById(R.id.textView)).setText("+");
+        }
 
         ((Button) findViewById(R.id.button2)).setOnClickListener(new Button.OnClickListener() {
 
