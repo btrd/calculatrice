@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,11 +26,33 @@ public class MainActivity extends AppCompatActivity {
 
                 EditText input2 = (EditText) findViewById(R.id.editText2);
                 int int2 = Integer.parseInt(input2.getText().toString());
-                int res = int1 + int2;
+
+
+                SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+                boolean multiplication = settings.getBoolean("multiplication", false);
+                int res;
+                if (multiplication) {
+                    res = int1 * int2;
+                } else {
+                    res = int1 + int2;
+                }
 
                 TextView text_view = (TextView) findViewById(R.id.textView5);
-                text_view.setText("Result : " + res);
+                text_view.setText("Resultat : " + res);
             }
         });
+
+        ((Switch) findViewById(R.id.switch1)).setOnClickListener(new Switch.OnClickListener(){
+            public void onClick(View v) {
+                Boolean isChecked = ((Switch) findViewById(R.id.switch1)).isChecked();
+                if (isChecked) {
+                    ((TextView) findViewById(R.id.textView)).setText("*");
+                } else {
+                    ((TextView) findViewById(R.id.textView)).setText("+");
+                }
+            }
+        });
+
     }
+
 }
