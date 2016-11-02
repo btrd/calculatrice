@@ -4,12 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,11 +24,9 @@ public class MainActivity extends AppCompatActivity {
                 EditText input2 = (EditText) findViewById(R.id.editText2);
                 int int2 = Integer.parseInt(input2.getText().toString());
 
-
-                SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-                boolean multiplication = settings.getBoolean("multiplication", false);
+                Boolean isChecked = ((Switch) findViewById(R.id.switch1)).isChecked();
                 int res;
-                if (multiplication) {
+                if (isChecked) {
                     res = int1 * int2;
                 } else {
                     res = int1 + int2;
