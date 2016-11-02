@@ -54,14 +54,20 @@ public class MainActivity extends AppCompatActivity {
         ((Switch) findViewById(R.id.switch1)).setOnClickListener(new Switch.OnClickListener(){
             public void onClick(View v) {
                 Boolean isChecked = ((Switch) findViewById(R.id.switch1)).isChecked();
-                if (isChecked) {
-                    ((TextView) findViewById(R.id.textView)).setText("*");
-                } else {
-                    ((TextView) findViewById(R.id.textView)).setText("+");
-                }
+                setOperation(isChecked);
             }
         });
 
     }
 
+    private void setOperation(Boolean multiplication) {
+        if (multiplication) {
+            ((TextView) findViewById(R.id.textView)).setText("*");
+        } else {
+            ((TextView) findViewById(R.id.textView)).setText("+");
+        }
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("multiplication", multiplication);
+    }
 }
