@@ -27,15 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 EditText input2 = (EditText) findViewById(R.id.editText2);
                 int int2 = Integer.parseInt(input2.getText().toString());
 
-
-                SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-                boolean multiplication = settings.getBoolean("multiplication", false);
-                int res;
-                if (multiplication) {
-                    res = int1 * int2;
-                } else {
-                    res = int1 + int2;
-                }
+                int res = int1 + int2;
 
                 TextView text_view = (TextView) findViewById(R.id.textView5);
                 text_view.setText("Resultat : " + res);
