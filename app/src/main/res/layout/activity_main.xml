@@ -15,7 +15,8 @@
         android:id="@+id/textView"
         android:textAppearance="@android:style/TextAppearance.Material.Headline"
         android:layout_alignBottom="@+id/editText2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        tools:targetApi="lollipop" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -62,5 +63,15 @@
         android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp" />
+
+    <Switch
+        android:text="Multiplication"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText2"
+        android:layout_alignRight="@+id/textView5"
+        android:layout_alignEnd="@+id/textView5"
+        android:id="@+id/switch1"
+        android:switchTextAppearance="@style/TextAppearance.AppCompat" />
 
 </RelativeLayout>
